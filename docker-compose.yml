@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  app:
+    image: openjdk
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    working_dir: /app
+    command: java -jar targets/*.jar
+    ports:
+      - 8080:8080
+  
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 2788
+      MYSQL_DATABASE: catalog
+      
